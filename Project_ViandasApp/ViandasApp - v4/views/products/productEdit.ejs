@@ -1,6 +1,4 @@
 <%- include('../partials/head',{cssFile:'productsStyles.css'})%>
-  <!-- <script src="scripts/productDetailsModals.js"></script> -->
-  <!-- <script src="../../scripts/createProductValidation.js"></script> -->
 
   <body>
     <%- include('../partials/header')%>
@@ -8,9 +6,9 @@
         <h4 class="headlines">Estas Editando el producto: <%=productToEdit.name %>
         </h4>
        
-          <div class="product-wrapper max-width max-height">
+          <div class="product-wrapper max-width">
             <h4>Edicion de productos</h4>
-            <form action="/products/<%=productToEdit.id%>?_method=PUT" method="POST" class=""
+            <form action="/products/<%=productToEdit.id%>?_method=PUT" method="POST" class="form-edit"
               enctype="multipart/form-data">
 
              
@@ -49,10 +47,9 @@
                   </div>
                 </div>
               </div>
-              <button type="submit" class="button" id="submitBtn">Actualizar</button>
+              <button type="submit" class="btn btn-success button-size" id="submitBtn">Actualizar</button>
 
-              <!-- </div> -->
-              <!-- </article> -->
+    
 
           </div>
  

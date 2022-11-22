@@ -3,8 +3,7 @@
 
 
 .product-wrapper{
-	max-width: 122vh;
-	height:44vh;
+
 	background-color: #f1eee8;
 	box-shadow: 7px 10px 10px 7px #b3905d;
 	/* margin: 0.7em 0em; */
@@ -17,6 +16,10 @@
 
 }
 
+.button-size{
+	width: 40%;
+
+}
 
 .main-body-edit{
 	margin-top: 220px;
@@ -96,13 +99,7 @@
 	
 }
 
-.max-width{
-	max-width: 122vh !important;
-}
 
-.max-height{
-	max-height: 44vh !important;
-}
 @media only screen and (min-width: 1200px) {
 
 	.productos .buttons{
@@ -112,8 +109,6 @@
 	}
 
 	.product-wrapper{
-		border: solid 1px red;
-		max-width: 65vh;
 	
 		background-color: #f1eee8;
 		box-shadow: 7px 10px 10px 7px #b3905d;
@@ -127,13 +122,20 @@
 
 	}
 
+	
+
+
 	.product-wrapper h4{
 		margin-bottom: 1em;
 		font-size: 1.5em;
 	}
 	.max-width{
-		max-width: none !important;
+		max-width: 110vh !important;
 	}
+	
+	/* .max-height{
+		max-height: 44vh !important;
+	} */
 	.form-edit{
 		display: flex;
 		flex-direction: column;
@@ -160,11 +162,21 @@
 		flex-direction: column;
 		margin: 0.3em 0.3em;
 	}
+
+	.form-edit{
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap	;
+		height: 100%;
+	}
+
+
+
 	.fields{
 		display: flex;
 		flex-direction: column;
 		justify-content: space-around;
-		height:31vh;
+		/* height:31vh; */
 	}
 	.fields label{
 		font-weight: 800;
@@ -190,7 +202,7 @@
 	}
 
 	.product-wrapper .product-article{
-		border:solid 1px red;
+	
 		display: flex;
 		flex-direction: column;
 	}
