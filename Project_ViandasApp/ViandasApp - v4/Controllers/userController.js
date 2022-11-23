@@ -1,6 +1,9 @@
 const { json } = require('express');
 const path = require('path');
 
+const User = require('../models/User');
+
+
 //const renderHome = (req, res) => {
  //   return res.render('home')
 //}
