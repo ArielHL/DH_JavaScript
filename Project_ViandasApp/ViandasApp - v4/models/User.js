@@ -4,7 +4,10 @@ const fs = require('fs');
 const path = require('path');
 
 const UserFilePath = path.resolve('./models/users.json');
+const { body } = require('express-validator');
 
+
+// ************************** User Logic **************************
 const User = {
 
     fileName: UserFilePath,
@@ -12,6 +15,12 @@ const User = {
     getData: function () {
         // Get data from json convert to array
         return JSON.parse(fs.readFileSync(this.fileName, 'utf-8'));
+    },
+
+
+    findAll: function () {
+        // Return all users
+        return this.getData();
     },
 
     generateId: function () {
@@ -23,12 +32,6 @@ const User = {
         }
         return 1
     },   
-
-    findAll: function () {
-        // Return all users
-        return this.getData();
-    },
-
     findByPk: function (id) {
         // Return user by id
         let allUsers = this.findAll();
@@ -78,5 +81,6 @@ const User = {
         fs.writeFileSync(this.fileName, JSON.stringify(finalUsers, null, ' '));
 }
 }
+
 
 module.exports = User;

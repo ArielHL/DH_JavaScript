@@ -26,6 +26,11 @@ body{
     background-color: #fff;
 }
 
+
+.button-size{
+	width: 40%;
+
+}
 /* ################# Section Header ##############*/
 
 .main-header{

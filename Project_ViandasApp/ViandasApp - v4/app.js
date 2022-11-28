@@ -5,9 +5,22 @@ const PUBLICFOLDER = path.resolve('public')
 const routerMain = require('./routers/mainRouter');
 const routerProduct = require('./routers/productsRouter')
 const routerUser = require('./routers/userRouter')
+const session = require('express-session');
+const cookies = require('cookie-parser');
 // Settings post requirement in app
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+// Settings session
+app.use(session({
+    secret  : 'secret',
+    resave  : false,
+    saveUninitialized : false
+    }));
+
+app.use(cookies());
+const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware');
+app.use(userLoggedMiddleware);
+    
 
 // calling methodOverride
 const methodOverride = require('method-override');
