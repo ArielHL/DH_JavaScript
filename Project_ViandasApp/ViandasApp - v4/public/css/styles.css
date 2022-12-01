@@ -26,6 +26,11 @@ body{
     background-color: #fff;
 }
 
+
+.button-size{
+	width: 40%;
+
+}
 /* ################# Section Header ##############*/
 
 .main-header{
@@ -238,9 +243,11 @@ main section article i{
 }
 
 .art_principal{
+    
     border-top: solid 1px #ebebeb;
     padding: 15px;
     background: white;
+    margin-bottom: 0.5em;
 
 }
 
