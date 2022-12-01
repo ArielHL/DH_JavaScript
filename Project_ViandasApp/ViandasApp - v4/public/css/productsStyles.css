@@ -96,6 +96,25 @@
 }
 
 
+@media only screen and (min-width: 768px) {
+
+
+	.product-list{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		
+		
+		
+	}
+
+
+}
+
+
+
+
 @media only screen and (min-width: 1200px) {
 
 	.productos .buttons{
@@ -230,14 +249,14 @@
 		padding: 1em;
 	}
 
-	.productos .product-list{
+	/* .productos .product-list{
 		position: relative;
-	}
+	} */
 
 
-	.btn-bottom{
+	/* .btn-bottom{
 		position: absolute;
-		left: 0px;
-		bottom: 0px;
-	}
+		left: 2px;
+		bottom: 2px;
+	} */
 }

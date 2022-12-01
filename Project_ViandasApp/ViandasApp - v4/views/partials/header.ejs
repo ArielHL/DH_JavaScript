@@ -22,7 +22,7 @@
         <ul class="left-navbar">
 
             <li> <i class="fa-solid fa-bowl-food"></i> <a href="/products">Viandas</a></li>
-            <% if (locals.isLogged) { %>
+            <% if (locals.isLogged && locals.userLogged.profile == 'admin') { %>
                 <li> <i class="fa-solid fa-gear"></i> <a href="/products/create">Manejo de productos</a></li>
                 <% } %>
                     <li> <i class="fa-solid fa-truck"></i> <a href="#">Zonas de Envio</a></li>

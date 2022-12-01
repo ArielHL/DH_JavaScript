@@ -21,6 +21,7 @@
   "address": "locura 3243",
   "city": "caba",
   "country": "Argentina",
+  "profile": "admin",
   "password": "$2a$10$i2bfZ.wPahCSssB.gCsA1OnT1DLvu6XgZzrC4uUqkibGKRg0Y9o3W",
   "confirmPassword": "$2a$10$rje9FP9/kJNZzizWBDmHBuv1SNaw8zoVnIO/mbRmzZMFu00AiazfG",
   "avatar": "1669572665889_img.jpeg"
@@ -34,6 +35,7 @@
   "address": "concurra ",
   "city": "caba",
   "country": "Argentina",
+  "profile": "admin",
   "password": "$2a$10$2o97lBreboNI2ET5.Vf60OYouCE8HcgpaZ6EE9HCSObn3Zp/1b2.y",
   "confirmPassword": "$2a$10$afF9Lv52tJgLnEVCSF1OduFm69Wk6vj8KDslZKb9VYPcHogH4KqJu",
   "avatar": "1669572756557_img.jpeg"
@@ -47,6 +49,7 @@
   "address": "concurra ",
   "city": "caba",
   "country": "Argentina",
+  "profile": "admin",
   "password": "$2a$10$rPTVHDFVBA97ZPQX6voeyuCM27fNL1Cz5beCpLao2yM6hkEJhz/4K",
   "confirmPassword": "$2a$10$jrhsIurhrP.GHAiIXRtjLepubWEzd9Tj7P2EqaHD4ELqudKDYWBsK",
   "avatar": "1669572802046_img.jpeg"
@@ -60,8 +63,23 @@
   "address": "Cachito fontana",
   "city": "caba",
   "country": "Argentina",
+  "profile": "admin",
   "password": "$2a$10$UvWvWDqzbS2axua218Q62OcPa/IEkk/DfQkPwV0Qxr8WVWyH9bBzm",
   "confirmPassword": "$2a$10$bfvBa.vJOerAu8XT.Lda..oBnR0gDuvLGR2BrAjvZVH39sYzhu9p2",
   "avatar": "1669573623456_img.jpeg"
+ },
+ {
+  "id": 6,
+  "fullName": "Jose Nardulli",
+  "birthDate": "1975-12-12",
+  "email": "jose@dh.com",
+  "mobilePhone": "11 5456 5456",
+  "address": "Italia",
+  "city": "Napoles",
+  "country": "Argentina",
+  "profile": "cliente",
+  "password": "$2a$10$UrxvqyWYwwlipPWGKKeJvu1eCnStJsTveqzX7vDTNTeQf6rdTtQpS",
+  "confirmPassword": "$2a$10$136gKUrQOdEWkmW3NgcfgutX6mgtBbCB02ANAz0YsU18ygXZ1oEme",
+  "avatar": "1669676594888_img.jpeg"
  }
 ]
