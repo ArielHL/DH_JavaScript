@@ -96,12 +96,13 @@ ul li a {
 
 
 .hamburguer-button{
-    background-color: #39b54a;
+    background-color: #0c805d;
     color: white;
     display: block;
     max-width: 50px;
     padding: 15px 0;
-    border-radius: 8px;
+    width: 35px;
+    border-radius: 12px;
     text-align: center;
     font-size: 25px;
     margin:auto;
@@ -194,10 +195,7 @@ width:55%;
     font-size: 21px;
 }
 
-.prices{
-    font-size: 18px;
-    font-weight: 700;
-}
+
 
 .discount,
 .description{
@@ -218,9 +216,6 @@ main section article{
     margin: 10px 0px;
 }
 
-main section article img{
-    width: 100%;
-}
 
 main section article i,
 .discount{
@@ -243,7 +238,9 @@ main section article i{
 }
 
 .art_principal{
-    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     border-top: solid 1px #ebebeb;
     padding: 15px;
     background: white;
@@ -531,9 +528,9 @@ footer{
 }
 /*Home*/
 
-.tipografiaTitle{
+/* .tipografiaTitle{
     font-style: italic;
-}
+} */
 /* ################## Section Carrito de Compras ################# */
 
 .main-container{
@@ -755,9 +752,9 @@ footer{
 }
 /*Home*/
 
-.tipografiaTitle{
+/* .tipografiaTitle{
     font-style: italic;
-}
+} */
 
 /* ################## Section Manejo de Productos ################# */
 
@@ -913,6 +910,8 @@ footer{
 
 .tipografiaTitle{
     font-style: italic;
+    font-weight: 900 ;
+    font-size: 25px;
 }
 
 /*Product registration title*/
@@ -945,9 +944,9 @@ footer{
         width: 95%;
         max-width: 120em;
         height: 49vh;
-        background-color: rgba(243, 231, 231, 0.932);
-        box-shadow: 7px 10px 10px 7px #b3905d;;
-        border-radius: 0.4em;
+        /* background-color: rgba(243, 231, 231, 0.932);
+        box-shadow: 7px 10px 10px 7px #b3905d;; */
+        /* border-radius: 0.4em; */
         overflow-x: hidden;
         margin: auto;
         /* height: 5vh; */
@@ -1119,15 +1118,12 @@ footer{
         display: flex;
         flex-wrap: wrap;
         /* justify-content: space-around; */
+        flex-direction: column;
     }
     .productos article {
         flex: 0 1 48%;
     }
-    .art_principal{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
+
     .art_principal .buy_icon{
         flex: 0 1 98%;
     }
@@ -1215,7 +1211,7 @@ footer{
       
         width: 90%;
    
-        height: 65vh;
+        height: 68vh;
 
         /* height: 5vh; */
         
@@ -1290,6 +1286,19 @@ footer{
         height: 64vh;
     }
 
+    .middle-home{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .row-reverse{
+        flex-direction: row-reverse;
+    }
+
+
+
+
+
     /* ##################  Section Carrito de Compras ################# */
 
     .main-container{
@@ -1308,9 +1317,9 @@ footer{
       
         width: 90%;
         max-width: 120em;
-        height: 70vh;
-        background-color: rgba(243, 231, 231, 0.932);
-        box-shadow: 7px 10px 10px 7px #b3905d;;
+        height: 78vh;
+        /* background-color: rgba(243, 231, 231, 0.932);
+        box-shadow: 7px 10px 10px 7px #b3905d;; */
         border-radius: 0.4em;
         overflow-x: hidden;
         margin: auto;
@@ -1397,24 +1406,7 @@ footer{
     align-items: center;
 }
 
-/*Register*/
-/* .form{
-    padding: 20px 15px;
-    background-color: lightgray;
-    text-align: left;
-} */
-/* 
-.form-register {
-	position: relative;
-	width: 400px;;
-	padding: 30px;
-	margin: auto;
-	margin-top: 20px;
-	border-radius: 4px;
-	font-family: 'roboto';
-	color: black;
-	box-shadow: 7px 10px 10px 7px;
-  } */
+
   
   .form-register h4 {
 	font-size: 22px;
