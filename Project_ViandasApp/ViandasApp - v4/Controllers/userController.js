@@ -25,8 +25,8 @@ const processRegister = (req, res) => {
     // check if there are errors
     if(!resultValidation.isEmpty()){
                 return res.render('users/register', {
-                                                    errors: resultValidation.mapped(),
-                                                    oldData: req.body
+                                                    errors: resultValidation.mapped(),  // los errores que contiene el objeto resultValidation
+                                                    oldData: req.body                   // lo que ya el usuario habia ingresado
                                                  });
     }
 
