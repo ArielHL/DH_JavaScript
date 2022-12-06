@@ -3,7 +3,7 @@ const path = require('path');
 
 const validations = [
 
-    body('fullName')
+    body('fullName')  // el name de la vista
                     .notEmpty().withMessage('Debes completar el campo Nombre y Apellido').bail()
                     .isLength({ min: 2 }).withMessage('El nombre debe tener al menos 2 caracteres'),
     body('birthDate')
