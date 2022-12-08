@@ -149,7 +149,7 @@ width:55%;
 }
 
 .logo{
-    width: 55%;
+    width: 50%;
 }
 
 .search_bar{
@@ -1228,7 +1228,9 @@ footer{
     }
 
 
-
+    .logo{
+        width: 35%;
+    }
 
 
     /* ##################  Section Carrito de Compras ################# */
