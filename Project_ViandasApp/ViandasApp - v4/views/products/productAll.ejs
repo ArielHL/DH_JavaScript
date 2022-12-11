@@ -29,28 +29,27 @@
                                     </p>
 
                                 </div>
-                                <% if (locals.usersLogged) { %>
-                                    <% if (locals.userLogged.profile=='cliente' ) { %>
-                                        <div class="add-carrito btn-bottom">
-                                            <a href="/users/carrito">
-                                                <button class="btn btn-primary ">Agregar al carrito</button>
+
+                                <% if (locals.userLogged && locals.userLogged.profile=='cliente' ) { %>
+                                    <div class="add-carrito btn-bottom">
+                                        <a href="/users/carrito">
+                                            <button class="btn btn-primary ">Agregar al carrito</button>
+                                        </a>
+                                    </div>
+                                    <% } else if (locals.userLogged && locals.userLogged.profile=='admin' ) { %>
+                                        <div class="add-carrito btn-bottom ">
+                                            <a href="/products/<%=producto.id%>">
+                                                <button class="btn btn-primary ">Acceder a Edicion</button>
                                             </a>
                                         </div>
-                                        <% } else if (locals.userLogged.profile=='admin' ) { %>
-                                            <div class="add-carrito btn-bottom ">
-                                                <a href="/products/<%=producto.id%>">
-                                                    <button class="btn btn-primary ">Acceder a Edicion</button>
+                                        <% } else if (locals.userLogged==undefined) { %>
+                                            <div class="add-carrito btn-bottom">
+                                                <a href="/users/login">
+                                                    <button class="btn btn-primary ">Agregar al carrito</button>
                                                 </a>
                                             </div>
                                             <% } %>
 
-                                                <% } else { %>
-                                                    <div class="add-carrito btn-bottom">
-                                                        <a href="/users/login">
-                                                            <button class="btn btn-primary ">Agregar al carrito</button>
-                                                        </a>
-                                                    </div>
-                                                    <% } %>
                             </article>
                             <% }); %>
                     </div>

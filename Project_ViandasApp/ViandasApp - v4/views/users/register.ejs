@@ -74,9 +74,8 @@
                   <% let countries=['Argentina', 'Bolivia' , 'Brasil' , 'Colombia' , 'Chile' , 'Ecuador' , 'Paraguay'
                     , 'Perú' , 'Uruguay' , 'Venezuela' ]; %>
                     <% for (const oneCountry of countries) { %>
-                      <option value="<%= oneCountry %>" <%=locals.oldData && (oneCountry===oldData.country) ? 'selected'
-                        : null %>
-                        > <%= oneCountry %>
+                      <option value=" <%=locals.oldData && (oneCountry===oldData.country) ? 'selected': null %>"> 
+                        <%= oneCountry %>
                       </option>
                       <% } %>
                 </select>
