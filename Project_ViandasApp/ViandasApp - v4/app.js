@@ -5,6 +5,7 @@ const PUBLICFOLDER = path.resolve('public')
 const routerMain = require('./routers/mainRouter');
 const routerProduct = require('./routers/productsRouter')
 const routerUser = require('./routers/userRouter')
+const routerTransaction = require('./routers/transactionRouter')
 const session = require('express-session');
 const cookies = require('cookie-parser');
 // Settings post requirement in app
@@ -42,3 +43,4 @@ app.listen(numeroPuerto, ()=>{
 app.use('/', routerMain);
 app.use('/products', routerProduct);
 app.use('/users', routerUser);
+// app.use('/trans', routerTransaction);

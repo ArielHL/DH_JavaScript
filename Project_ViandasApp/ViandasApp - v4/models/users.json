@@ -95,5 +95,19 @@
   "password": "$2a$10$WjgJgrYSJ0f87ckVnB89NetDuMc6eE8o61/gMLuq2Zo6Hc0W7Qcty",
   "confirmPassword": "$2a$10$Wd75i7tKdz8fqcSVY4Yw9.0nLuShLv7a16C7DxlhJWI2cLoDdkI8i",
   "avatar": "1670727961923_img.jpeg"
+ },
+ {
+  "id": 8,
+  "fullName": "Luis",
+  "birthDate": "1974-11-12",
+  "email": "luis@dh.com",
+  "mobilePhone": "145654234234",
+  "address": "asdfjasdñflkj",
+  "city": "caba",
+  "country": " ",
+  "profile": "admin",
+  "password": "$2a$10$IjOFPgZyhrEUVkN5.4OsJuC5PM.dEXeuJ/H5YqCao8VwCFD.VRoQS",
+  "confirmPassword": "$2a$10$0cn1mh34P37xyuvOpsbfOuTPm1zWqqlqkf5PAoJV9IQWP8gqhGyDm",
+  "avatar": "1672021131385_img.jpeg"
  }
 ]
