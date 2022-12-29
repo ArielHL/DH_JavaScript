@@ -18,6 +18,13 @@ module.exports = (sequelize, DataTypes) => {
       Users.belongsTo(models.Address,{
         as:'userAddress',
         foreignKey:'address_id', 
+      }),
+      Users.belongsToMany(models.Products,{
+        as:'userTransactions',
+        through:'Transactions',
+        foreignKey:'user_id',
+        otherKey:'product_id',
+        timestamps:true
       })
 
     }
@@ -36,6 +43,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Users',
+    tableName:'user'
   });
   return Users;
 };

@@ -11,6 +11,27 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Transactions.belongsTo(models.TransactionStatus,{
+        as:'transactionStatus',
+        foreignKey:'status_id'
+      }),
+      Transactions.belongsTo(models.TransactionType,{
+        as:'transactionType',
+        foreignKey:'type_id'
+      }),
+      Transactions.belongsTo(models.Currency,{
+        as:'currency',
+        foreignKey:'currency_id'
+      }),
+      Transactions.belongsTo(models.PaymentMethod,{
+        as:'paymentMethod',
+        foreignKey:'paymentMethod_id'
+      }),
+      Transactions.belongsTo(models.PaymentStatus,{
+        as:'paymentStatus',
+        foreignKey:'paymentStatus_id'
+      })
+
     }
   }
   Transactions.init({
@@ -32,6 +53,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Transactions',
+    tableName:'transaction'
   });
   return Transactions;
 };

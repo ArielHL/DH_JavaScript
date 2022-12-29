@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Transactions', {
+    await queryInterface.createTable('transaction', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,19 +13,49 @@ module.exports = {
         type: Sequelize.DATE
       },
       product_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'product',
+          key: 'id'        
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL'
       },
       user_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'user',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
       },
       status_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'transactionstatus',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
       },
       type_id: {
-        type: Sequelize.INTEGER
-      },
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'TransactionType',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
+          },
       currency_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'currency',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
       },
       productQuantity: {
         type: Sequelize.INTEGER
@@ -46,10 +76,24 @@ module.exports = {
         type: Sequelize.DECIMAL
       },
       paymentMethod_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'paymentmethod',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
+
       },
       paymentStatus_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'paymentstatus',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
+        
       },
       transactionPaymentId: {
         type: Sequelize.INTEGER
@@ -65,6 +109,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Transactions');
+    await queryInterface.dropTable('transaction');
   }
 };

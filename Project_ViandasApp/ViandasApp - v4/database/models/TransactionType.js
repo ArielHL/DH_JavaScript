@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      TransactionType.hasMany(models.Transactions,{
+        as:'transactionsType',
+        foreignKey:'type_id'  
+      })
     }
   }
   TransactionType.init({
@@ -18,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'TransactionType',
+    tableName:'transactionType'
   });
   return TransactionType;
 };
