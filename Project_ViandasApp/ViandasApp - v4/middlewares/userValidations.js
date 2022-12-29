@@ -15,12 +15,12 @@ const validations = [
     body('mobilePhone')
                     .notEmpty().withMessage('Debes completar el campo Teléfono').bail()
                     .isLength({ min: 10 }).withMessage('El teléfono debe tener al menos 10 caracteres'),
-    body('address')
-                    .notEmpty().withMessage('Debes completar el campo Dirección').bail()
-                    .isLength({ min: 5 }).withMessage('La dirección debe tener al menos 5 caracteres'),
-    body('city')    
-                    .notEmpty().withMessage('Debes completar el campo Ciudad').bail()
-                    .isLength({ min: 2 }).withMessage('La ciudad debe tener al menos 2 caracteres'),    
+    // body('address')
+    //                 .notEmpty().withMessage('Debes completar el campo Dirección').bail()
+    //                 .isLength({ min: 5 }).withMessage('La dirección debe tener al menos 5 caracteres'),
+    // body('city')    
+    //                 .notEmpty().withMessage('Debes completar el campo Ciudad').bail()
+    //                 .isLength({ min: 2 }).withMessage('La ciudad debe tener al menos 2 caracteres'),    
     
     body('country').
                     notEmpty().withMessage('Debes completar el campo País'),

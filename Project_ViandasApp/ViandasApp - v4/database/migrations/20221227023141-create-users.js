@@ -21,9 +21,6 @@ module.exports = {
       mobilePhone: {
         type: Sequelize.STRING,
       },
-      landPhone: {
-        type: Sequelize.STRING,
-      },
       address_id: {
         type: Sequelize.INTEGER,
         references: {

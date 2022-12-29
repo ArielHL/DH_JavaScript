@@ -13,11 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Products.belongsToMany(models.Users,{
         as:'productTransaction',
-        through:'Transactions',
+        through:'transaction',
         foreignKey:'product_id',
         otherKey:'user_id',
-        timestamps:true
-      
+        timestamps:false
       })
     }
   }
@@ -29,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     tags: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Product',
+    modelName: 'Products',
     tableName:'product'
   });
   return Products;

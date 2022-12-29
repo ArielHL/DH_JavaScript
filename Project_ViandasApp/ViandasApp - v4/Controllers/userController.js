@@ -1,7 +1,11 @@
 
 const path = require('path');
+const { Op } = require("sequelize");
 
-const User = require('../models/User');
+// const User = require('../models/User');
+
+const db = require('../database/models');
+const User = db.User;
 
 const {validationResult} = require('express-validator');
 const { userInfo } = require('os');

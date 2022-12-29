@@ -18,23 +18,21 @@ module.exports = (sequelize, DataTypes) => {
       Users.belongsTo(models.Address,{
         as:'userAddress',
         foreignKey:'address_id', 
-      }),
+      })
       Users.belongsToMany(models.Products,{
         as:'userTransactions',
-        through:'Transactions',
+        through:'transaction',
         foreignKey:'user_id',
         otherKey:'product_id',
-        timestamps:true
+        timestamps:false
       })
-
     }
   }
   Users.init({
-    fullname: DataTypes.STRING,
+    fullName: DataTypes.STRING,
     birthDate: DataTypes.DATE,
     email: DataTypes.STRING,
     mobilePhone: DataTypes.STRING,
-    landPhone: DataTypes.STRING,
     address_id: DataTypes.INTEGER,
     role_id: DataTypes.INTEGER,
     password: DataTypes.STRING,
