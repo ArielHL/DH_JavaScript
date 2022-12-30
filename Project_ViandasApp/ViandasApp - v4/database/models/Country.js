@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       Country.hasMany(models.Address,{
         as:'countries',
         foreignKey:'country_id',
+      }),
+      Country.hasMany(models.Users,{
+        as:'userCountry',
+        foreignKey:'country_id',
       })
     }
   }

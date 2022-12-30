@@ -5,7 +5,10 @@ const { Op } = require("sequelize");
 // const User = require('../models/User');
 
 const db = require('../database/models');
-const User = db.User;
+const Users = db.Users;
+const Country = db.Country;
+const UserRol = db.UserRol;
+
 
 const {validationResult} = require('express-validator');
 const { userInfo } = require('os');
@@ -19,12 +22,19 @@ const bcryptjs = require('bcryptjs');
   //  return res.render('about')
 //}
 
-const register = (req, res) => {
+const register = async (req, res) => {
     
-    return res.render('users/register')
+    const countries = await Country.findAll();
+    const userRoles = await UserRol.findAll();
+    
+    return res.render('users/register',{countries,userRoles})
 }
 
-const processRegister = (req, res) => {
+const processRegister = async (req, res) => {
+    
+    const countries = await Country.findAll();
+    const userRoles = await UserRol.findAll();
+
     const resultValidation=validationResult(req)
     // check if there are errors
     if(!resultValidation.isEmpty()){
@@ -35,8 +45,11 @@ const processRegister = (req, res) => {
     }
 
     // if all validations are ok then check if the user already exists
-    let userInDB = User.findByField('email', req.body.email);
+    let userInDB = await Users.findOne({
+        where: {'email': req.body.email}  // 'email' es el campo de la tabla 'users
+    });
 
+    
     if (userInDB) {
         return res.render('users/register', {
                         errors: {
@@ -44,7 +57,9 @@ const processRegister = (req, res) => {
                                 msg: 'Este email ya está registrado'
                             }
                         },
-                        oldData: req.body
+                        oldData: req.body,
+                        countries:countries,
+                        userRoles:userRoles
      });
     }
 
@@ -55,14 +70,20 @@ const processRegister = (req, res) => {
     let hashedConfirmPassword = bcryptjs.hashSync(req.body.confirmPassword, 10);
     let userToCreate={
         ...req.body,
+        country_id: req.body.country,
+        role_id: req.body.profile,
         avatar: req.file.filename,
         password: hashedPassword,
         confirmPassword: hashedConfirmPassword
-
     }
 
-    User.create(userToCreate);
-    return res.redirect('login')
+    try{
+        let userCreated = await Users.create(userToCreate);
+        return res.redirect('login')
+    }
+    catch(error){
+        console.log(error)
+    }
 
 
 }
@@ -72,13 +93,17 @@ const login = (req, res) => {
     return res.render('users/login')
 }
 
-const loginProcess = (req, res) => {
-    
-    let userToLogin = User.findByField('email', req.body.userEmail);
+const loginProcess = async (req, res) => {
+
+    let userToLogin = await Users.findOne({
+        where: {'email': req.body.email},
+        include : ['userCountry','userRole'] 
+    });
+   
    // ******************* check if user exists ************ 
     if (userToLogin) {
     // ****************** Check password *******************    
-                let passwordOK=bcryptjs.compareSync(req.body.userPassword, userToLogin.password)
+                let passwordOK=bcryptjs.compareSync(req.body.password, userToLogin.password)
                 if (passwordOK) {
                     // elimino del objeto userToLogin la propiedad password
                     delete userToLogin.password;

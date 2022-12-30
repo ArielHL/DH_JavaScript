@@ -71,28 +71,23 @@
                 <label><b>País de nacimiento:</b></label>
                 <select name="country" class="form-control <%= locals.errors && errors.country ? 'is-invalid' : null %>"
                   <option value="">Elegí un país</option>
-                  <% let countries=['Argentina', 'Bolivia' , 'Brasil' , 'Colombia' , 'Chile' , 'Ecuador' , 'Paraguay'
-                    , 'Perú' , 'Uruguay' , 'Venezuela' ]; %>
+              
                     <% for (const oneCountry of countries) { %>
-                      <option value=" <%=locals.oldData && (oneCountry===oldData.country) ? 'selected': null %>">
-                        <%= oneCountry %>
-                      </option>
+                      <option value="<%=oneCountry.id%>"<%=locals.oldData && (oneCountry.id===oldData.country) ? 'selected' :null %>> <%= oneCountry.name %> </option>
                       <% } %>
                 </select>
                 <div class="text-danger">
                   <%= (locals.errors && errors.country) ? errors.country.msg : '' %>
                 </div>
+
                 <div class="form-group botton-margin">
                   <label><b>Perfil:</b></label>
                   <select name="profile"
                     class="form-control <%= locals.errors && errors.country ? 'is-invalid' : null %>" <option
                     value="">Elegí un Perfil</option>
-                    <% let profiles=['admin', 'cliente' ]; %>
-                      <% for (const profile of profiles) { %>
-                        <option value="<%= profile %>" <%=locals.oldData && (profile===oldData.profile) ? 'selected' :
-                          null %>
-                          > <%= profile %>
-                        </option>
+                  
+                      <% for (const profile of userRoles) { %>
+                        <option value="<%= profile.id %>" <%=locals.oldData && (profile.id===oldData.profile) ? 'selected' :null %>> <%= profile.role %> </option>
                         <% } %>
                   </select>
                   <div class="text-danger">

@@ -39,6 +39,15 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "SET NULL",
       },
+      country_id:{
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Country",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
+      },
       password: {
         type: Sequelize.STRING,
       },

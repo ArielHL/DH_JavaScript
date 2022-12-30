@@ -18,7 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       Users.belongsTo(models.Address,{
         as:'userAddress',
         foreignKey:'address_id', 
-      })
+      }),
+      Users.belongsTo(models.Country,{
+        as:'userCountry',
+        foreignKey:'country_id',
+      }),
       Users.belongsToMany(models.Products,{
         as:'userTransactions',
         through:'transaction',
@@ -35,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     mobilePhone: DataTypes.STRING,
     address_id: DataTypes.INTEGER,
     role_id: DataTypes.INTEGER,
+    country_id: DataTypes.INTEGER,
     password: DataTypes.STRING,
     confirmPassword: DataTypes.STRING,
     avatar: DataTypes.STRING
