@@ -41,7 +41,9 @@ const processRegister = async (req, res) => {
     if(!resultValidation.isEmpty()){
                 return res.render('users/register', {
                                                     errors: resultValidation.mapped(),  // los errores que contiene el objeto resultValidation
-                                                    oldData: req.body                   // lo que ya el usuario habia ingresado
+                                                    oldData: req.body,
+                                                    countries,
+                                                    userRoles               
                                                  });
     }
 
@@ -164,14 +166,30 @@ const processCarrito = (req, res) => {
 
 const address = async (req, res) => {
     const countries = await Country.findAll();
-    const city = await City.findAll();
-    return res.render('users/address',{countries,city})
+ 
+    return res.render('users/address',{countries})
 }
 
 const processAddress =  (req, res) => {
-    const data = req.body;
+    return res.send(req.body)
+   
+    const addressResultValidation=validationResult(req);
 
-    return res.send(data)
+    return res.send(addressResultValidation.mapped())
+
+    if(!addressResultValidation.isEmpty()){
+        return res.render('users/address', {
+                                            errors: addressResultValidation.mapped(),  // los errores que contiene el objeto resultValidation
+                                            oldData: req.body,  
+                                            countries:countries
+                                            });
+    }
+
+
+
+  
+
+    return res.send('Hola')
 }
 
 

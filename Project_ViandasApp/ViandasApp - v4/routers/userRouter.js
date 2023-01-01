@@ -5,6 +5,7 @@ const { body } = require('express-validator');
 // importar controlador
 const userController = require('../controllers/userController');
 const validations = require('../middlewares/uservalidations');
+const addressValidations = require('../middlewares/addressValidation');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 
 
@@ -41,7 +42,7 @@ router.post('/login', userController.loginProcess);
 router.get('/profile', authMiddleware,userController.profile);
 
 // formulario para agregar direcciones
-router.get('/address', userController.address);
+router.get('/address', addressValidations,userController.address);
 router.post('/address', userController.processAddress);
 
 // Procesar el LogOut

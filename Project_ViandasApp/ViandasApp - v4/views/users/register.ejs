@@ -48,25 +48,7 @@
                   <%= (locals.errors && errors.mobilePhone) ? errors.mobilePhone.msg : '' %>
                 </div>
               </div>
-              <!-- <div class="form-group botton-margin">
-                <label for=" adress"><b>Domicilio</b> </label>
-                <input class="form-control <%= locals.errors && errors.address ? 'is-invalid' : null %>" type="text"
-                  name="address" id="adress" placeholder="Ingrese su Domicilio"
-                  value="<%= locals.oldData ? oldData.address : null %>">
-
-                <div class="text-danger">
-                  <%= (locals.errors && errors.address) ? errors.address.msg : '' %>
-                </div>
-              </div> -->
-              <!-- <div class="form-group botton-margin">
-                <label for=" city"><b>Ciudad</b> </label>
-                <input class="form-control <%= locals.errors && errors.city ? 'is-invalid' : null %>" type="text"
-                  name="city" id="city" placeholder="Ingrese Ciudad"
-                  value="<%= locals.oldData ? oldData.city : null %>">
-                <div class="text-danger">
-                  <%= (locals.errors && errors.city) ? errors.city.msg : '' %>
-                </div>
-              </div> -->
+    
               <div class="form-group botton-margin">
                 <label><b>País de nacimiento:</b></label>
                 <select name="country" class="form-control <%= locals.errors && errors.country ? 'is-invalid' : null %>"

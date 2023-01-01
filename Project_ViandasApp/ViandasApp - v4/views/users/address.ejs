@@ -7,15 +7,16 @@
       <main class="main-body">
 
         <main class="main-register">
-          <form action="/users/address" method="POST" class="form" enctype="multipart/form-data">
+          <form action="/users/address" method="post" class="form" enctype="multipart/form-data">
             
             <div class="form-register">
+
               <h4>Direcciones</h4>
 
               <div class="form-group botton-margin">
-                <label for=" addressName"> <b>Nombre</b></label>
+                <label for=" name"> <b>Alias de la Dirección</b></label>
                 <input class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>" type="text"
-                  name="name" id="addressName" placeholder="Ingrese el Nombre para esta Direccion"
+                  name="name" id="name" placeholder="Ingrese el Nombre para esta Direccion"
                   value="<%= locals.oldData ? oldData.name : null %>">
                 <div class="text-danger">
                   <%= (locals.errors && errors.name) ? errors.name.msg : '' %>
@@ -23,7 +24,7 @@
               </div>
 
               <div class="form-group botton-margin">
-                <label for=" street"> <b> Nombre de la Calle</b></label>
+                <label for=" street"> <b> Calle</b></label>
                 <input class="form-control <%= locals.errors && errors.street ? 'is-invalid' : null %>" type="text"
                   name="street" id="street" value="<%= locals.oldData ? oldData.street : null %>">
                 <div class="text-danger">
@@ -79,7 +80,7 @@
               </div>
 
               <div class="form-group botton-margin">
-                <label><b>País de nacimiento:</b></label>
+                <label><b>País:</b></label>
                 <select name="country" class="form-control <%= locals.errors && errors.country ? 'is-invalid' : null %>"
                   <option value="">Elegí un país</option>
 
