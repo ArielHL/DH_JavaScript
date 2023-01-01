@@ -21,7 +21,6 @@ const storage = multer.diskStorage({
 		cb(null, fileName);
 	}
 });
-
 const upload = multer({ storage });
 
 
@@ -41,11 +40,17 @@ router.post('/login', userController.loginProcess);
 // Perfil de Usuario
 router.get('/profile', authMiddleware,userController.profile);
 
+// formulario para agregar direcciones
+router.get('/address', userController.address);
+router.post('/address', userController.processAddress);
+
 // Procesar el LogOut
 router.get('/logout', userController.logout);
 
 // formulario de carrito de compras
 router.get('/carrito', userController.carrito);
 router.post('/carrito', userController.processCarrito);
+
+
 
 module.exports= router;

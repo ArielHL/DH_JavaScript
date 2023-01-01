@@ -8,6 +8,7 @@ const db = require('../database/models');
 const Users = db.Users;
 const Country = db.Country;
 const UserRol = db.UserRol;
+const City = db.City;
 
 
 const {validationResult} = require('express-validator');
@@ -161,6 +162,18 @@ const processCarrito = (req, res) => {
     return res.render('users/carritoCompras')
 }
 
+const address = async (req, res) => {
+    const countries = await Country.findAll();
+    const city = await City.findAll();
+    return res.render('users/address',{countries,city})
+}
+
+const processAddress =  (req, res) => {
+    const data = req.body;
+
+    return res.send(data)
+}
+
 
 module.exports = {  
     register,
@@ -171,5 +184,7 @@ module.exports = {
     logout,
     carrito,
     processCarrito,
+    address,
+    processAddress
   
 }      

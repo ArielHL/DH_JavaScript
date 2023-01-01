@@ -29,7 +29,15 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:'user_id',
         otherKey:'product_id',
         timestamps:false
+      }),
+      Users.belongsToMany(models.Address,{
+        as:'usersAddress',
+        through:'user_address',
+        foreignKey:'user_id',
+        otherKey:'address_id',
+        timestamps:true
       })
+
     }
   }
   Users.init({

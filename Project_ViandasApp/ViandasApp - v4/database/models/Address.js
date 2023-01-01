@@ -22,6 +22,13 @@ module.exports = (sequelize, DataTypes) => {
       Address.belongsTo(models.City,{
         as:'city',
         foreignKey:'city_id',
+      }),
+      Address.belongsToMany(models.Users,{
+        as:'addressUser',
+        through:'user_address',
+        foreignKey:'address_id',
+        otherKey:'user_id',
+        timestamps:true
       })
     }
   }
@@ -34,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
     zipCode: DataTypes.INTEGER,
     city_id: DataTypes.INTEGER,
     country_id: DataTypes.INTEGER
+ 
   }, {
     sequelize,
     modelName: 'Address',
