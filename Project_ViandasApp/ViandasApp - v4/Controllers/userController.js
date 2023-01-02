@@ -2,6 +2,8 @@
 const path = require('path');
 const { Op } = require("sequelize");
 
+const fetch = require('node-fetch');
+
 // const User = require('../models/User');
 
 const db = require('../database/models');
@@ -14,6 +16,7 @@ const City = db.City;
 const {validationResult} = require('express-validator');
 const { userInfo } = require('os');
 const bcryptjs = require('bcryptjs');
+const { response } = require('express');
 
 //const renderHome = (req, res) => {
  //   return res.render('home')
@@ -169,12 +172,13 @@ const processCarrito = (req, res) => {
 
 const address = async (req, res) => {
     const countries = await Country.findAll();
- 
+     
     return res.render('users/address',{countries})
 }
 
 const processAddress =   async (req, res) => {
 
+    return res.send(req.body)
 
     const addressResultValidation=validationResult(req);
     const countries = await Country.findAll();
@@ -188,8 +192,43 @@ const processAddress =   async (req, res) => {
                                             });
     }
 
+    let addressToCreate={
+        ...req.body,
+        country_id: req.body.country,
+        role_id: req.body.profile,
+        avatar: req.file.filename,
+        password: hashedPassword,
+        confirmPassword: hashedConfirmPassword
+    }
+
+    try{
+        let userCreated = await Users.create(addressToCreate);
+        return res.redirect('sers/usersProfile')
+    }
+    catch(error){
+        console.log(error)
+    }
 
 
+
+
+
+
+
+}
+
+// ****************************************  API REST  ****************************************
+userList = async (req, res) => {
+    const users = await Users.findAll();
+    return res.json({data:users})
+    }
+
+citiesList = async (req, res) => {
+    // promesa 1 busca que el servidor este levantado y funcione
+    const response = await fetch('https://apis.datos.gob.ar/georef/api/municipios?');
+    // promesa 2 espera a que la promesa 1 se resuelva y el formato sea adecuado para json
+    const cities = await response.json()
+    return res.json({data:cities})
 }
 
 
@@ -203,6 +242,8 @@ module.exports = {
     carrito,
     processCarrito,
     address,
-    processAddress
+    processAddress,
+    userList,
+    citiesList
   
 }      

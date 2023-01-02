@@ -52,6 +52,9 @@ router.get('/logout', userController.logout);
 router.get('/carrito', userController.carrito);
 router.post('/carrito', userController.processCarrito);
 
+// *********************** API REST ***************************
+router.get('/list', userController.userList);
+router.get('/cities', userController.citiesList);
 
 
 module.exports= router;
