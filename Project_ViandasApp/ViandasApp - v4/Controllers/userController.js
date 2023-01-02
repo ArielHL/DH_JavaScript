@@ -173,14 +173,12 @@ const address = async (req, res) => {
     return res.render('users/address',{countries})
 }
 
-const processAddress =   (req, res) => {
+const processAddress =   async (req, res) => {
 
-   
-    return res.send(req.body)
-   
+
     const addressResultValidation=validationResult(req);
+    const countries = await Country.findAll();
 
-    return res.send(addressResultValidation.mapped())
 
     if(!addressResultValidation.isEmpty()){
         return res.render('users/address', {
@@ -192,9 +190,6 @@ const processAddress =   (req, res) => {
 
 
 
-  
-
-    return res.send('Hola')
 }
 
 

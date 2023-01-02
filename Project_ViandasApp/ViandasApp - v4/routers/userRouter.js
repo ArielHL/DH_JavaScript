@@ -42,8 +42,8 @@ router.post('/login', userController.loginProcess);
 router.get('/profile', authMiddleware,userController.profile);
 
 // formulario para agregar direcciones
-router.get('/address', addressValidations,userController.address);
-router.post('/address', userController.processAddress);
+router.get('/address', userController.address);
+router.post('/address',addressValidations, userController.processAddress);
 
 // Procesar el LogOut
 router.get('/logout', userController.logout);
