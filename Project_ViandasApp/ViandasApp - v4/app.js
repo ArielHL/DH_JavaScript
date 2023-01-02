@@ -9,7 +9,7 @@ const routerTransaction = require('./routers/transactionRouter')
 const session = require('express-session');
 const cookies = require('cookie-parser');
 // Settings post requirement in app
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 // Settings session
 app.use(session({

@@ -33,6 +33,7 @@ const register = async (req, res) => {
 
 const processRegister = async (req, res) => {
     
+ 
     const countries = await Country.findAll();
     const userRoles = await UserRol.findAll();
 
@@ -98,6 +99,8 @@ const login = (req, res) => {
 
 const loginProcess = async (req, res) => {
 
+    const bodyData = req.body;
+
     let userToLogin = await Users.findOne({
         where: {'email': req.body.email},
         include : ['userCountry','userRole'] 
@@ -127,7 +130,7 @@ const loginProcess = async (req, res) => {
                             msg: 'Esta Contraseña es incorrecta'
                         }
                     },
-                    oldData: req.body
+                    oldData: bodyData
                 });      
     } else {
         return res.render('users/login', {
@@ -136,7 +139,7 @@ const loginProcess = async (req, res) => {
                     msg: 'Este email no está registrado'
                 }
             },
-            oldData: req.body
+            oldData: bodyData
         });
     }
  }
@@ -170,7 +173,9 @@ const address = async (req, res) => {
     return res.render('users/address',{countries})
 }
 
-const processAddress =  (req, res) => {
+const processAddress =   (req, res) => {
+
+   
     return res.send(req.body)
    
     const addressResultValidation=validationResult(req);
