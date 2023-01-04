@@ -11,6 +11,7 @@ const Users = db.Users;
 const Country = db.Country;
 const UserRol = db.UserRol;
 const City = db.City;
+const Address = db.Address;
 
 
 const {validationResult} = require('express-validator');
@@ -172,38 +173,37 @@ const processCarrito = (req, res) => {
 
 const address = async (req, res) => {
     const countries = await Country.findAll();
+    const cities = await City.findAll();
      
-    return res.render('users/address',{countries})
+    return res.render('users/address',{countries,cities})
 }
 
 const processAddress =   async (req, res) => {
 
-    return res.send(req.body)
+   
 
     const addressResultValidation=validationResult(req);
     const countries = await Country.findAll();
+    const cities = await City.findAll();
 
 
     if(!addressResultValidation.isEmpty()){
         return res.render('users/address', {
                                             errors: addressResultValidation.mapped(),  // los errores que contiene el objeto resultValidation
                                             oldData: req.body,  
-                                            countries:countries
+                                            countries:countries,
+                                            cities:cities
                                             });
     }
 
     let addressToCreate={
-        ...req.body,
-        country_id: req.body.country,
-        role_id: req.body.profile,
-        avatar: req.file.filename,
-        password: hashedPassword,
-        confirmPassword: hashedConfirmPassword
-    }
+        ...req.body
+       }
+
 
     try{
-        let userCreated = await Users.create(addressToCreate);
-        return res.redirect('sers/usersProfile')
+        let userCreated = await Address.create(addressToCreate);
+        return res.redirect('/users/profile')
     }
     catch(error){
         console.log(error)
@@ -225,10 +225,10 @@ userList = async (req, res) => {
 
 citiesList = async (req, res) => {
     // promesa 1 busca que el servidor este levantado y funcione
-    const response = await fetch('https://apis.datos.gob.ar/georef/api/municipios?');
+    const response = await fetch('https://apis.datos.gob.ar/georef/api/provincias?');
     // promesa 2 espera a que la promesa 1 se resuelva y el formato sea adecuado para json
     const cities = await response.json()
-    return res.json({data:cities})
+    return res.json({data:cities.provincias})
 }
 
 
