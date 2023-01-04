@@ -21,11 +21,11 @@ const addressValidations = [
     body('zipCode')    
                     .notEmpty().withMessage('Debes completar el campo ZipCode'),
                     
-    body('city')
-                    .notEmpty().withMessage('Debes completar el campo Teléfono'),
+    body('city_id')
+                    .notEmpty().withMessage('Debes completar el campo Ciudad'),
 
-    body('country')
-                    .notEmpty().withMessage('Debes completar el campo Teléfono')
+    body('country_id')
+                    .notEmpty().withMessage('Debes completar el campo Pais')
 
                     
     ]

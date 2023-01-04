@@ -70,18 +70,23 @@
 
 
               <div class="form-group botton-margin">
-                <label for=" city"><b>Ciudad</b> </label>
-                <input class="form-control <%= locals.errors && errors.city ? 'is-invalid' : null %>" type="text"
-                  name="city" id="city" placeholder="Ingrese Ciudad"
-                  value="<%= locals.oldData ? oldData.city : null %>">
+                <label><b>Ciudad:</b></label>
+                <select name="city_id" class="form-control <%= locals.errors && errors.city ? 'is-invalid' : null %>"
+                  <option value="">Elegí una ciudad</option>
+
+                  <% for (const oneCity of cities) { %>
+                    <option value="<%=oneCity.id%>" <%=locals.oldData && (oneCity.id===oldData.city)
+                      ? 'selected' :null %>> <%= oneCity.name %>
+                    </option>
+                    <% } %>
+                </select>
                 <div class="text-danger">
                   <%= (locals.errors && errors.city) ? errors.city.msg : '' %>
                 </div>
-              </div>
 
               <div class="form-group botton-margin">
                 <label><b>País:</b></label>
-                <select name="country" class="form-control <%= locals.errors && errors.country ? 'is-invalid' : null %>"
+                <select name="country_id" class="form-control <%= locals.errors && errors.country ? 'is-invalid' : null %>"
                   <option value="">Elegí un país</option>
 
                   <% for (const oneCountry of countries) { %>
@@ -93,6 +98,7 @@
                 <div class="text-danger">
                   <%= (locals.errors && errors.country) ? errors.country.msg : '' %>
                 </div>
+
                 <br>
                 <div class="flex-center">
                   <button type="submit" class="btn btn-success button-size">Agregar Dirección</button>
