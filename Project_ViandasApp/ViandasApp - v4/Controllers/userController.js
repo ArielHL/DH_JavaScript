@@ -207,7 +207,7 @@ const processAddress =   async (req, res) => {
     try{
         // create address
         let addressCreated = await Address.create(addressToCreate);
-1
+
         let addressId = addressCreated.id;
         let userId = req.session.userLogged.id;
                        
@@ -253,9 +253,7 @@ const processEditAddress = async (req, res) => {
                                             });
     }
 
-    let addressToUpdate={
-        ...req.body
-         }
+    let addressToUpdate={ ...req.body }
 
     try{
         // update address
