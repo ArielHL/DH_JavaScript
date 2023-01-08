@@ -281,25 +281,17 @@ const deleteAddress = async (req, res) => {
     const userId = req.session.userLogged.id;
     const addressId = req.params.id;
 
-    // destroy the address if it is not used in other user
 
-    // const userCounts=await UserAddress.findAll({where:{address_id:addressId,
-    //                                                    user_id:{[Op.not]:userId} }})
-    // if(userCounts.length==0){
+   
 
-    await Address.destroy({where:{id:addressId}})
-    // destroy the userAddress in pivot table if addressId is null
-    await UserAddress.destroy({
-                                where:{user_id:userId,
-                                    address_id:null }
-      
-    })
-    // }else{
-    //     // if address is used in other user, set user_id to null
-    //     await UserAddress.update(
-    //         {user_id:null},{where:{address_id:addressId,}}
-    //     )
-    // }
+  
+                            await Address.destroy({where:{id:addressId}})
+                            // destroy the userAddress in pivot table if addressId is null
+                            await UserAddress.destroy({
+                                                        where:{user_id:userId,
+                                                            address_id:null }
+                                                        })
+       
 
     const addressList = await Users.findByPk(userId, {include: ['usersAddress']})                                                                                        
 
