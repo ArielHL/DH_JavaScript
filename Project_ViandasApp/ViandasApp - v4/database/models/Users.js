@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const Address = require('./Address');
 module.exports = (sequelize, DataTypes) => {
   class Users extends Model {
     /**
@@ -37,7 +38,6 @@ module.exports = (sequelize, DataTypes) => {
         otherKey:'address_id',
         timestamps:true
       })
-
     }
   }
   Users.init({

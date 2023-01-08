@@ -157,6 +157,7 @@ const profile = async (req, res) => {
             include: ['usersAddress']
     })                                                                                        
     
+    // return res.send(addressList)
     return res.render('users/usersProfile',{
         user: req.session.userLogged,
         addressList:addressList.usersAddress

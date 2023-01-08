@@ -26,7 +26,7 @@
                         <div class=" address-block-h">
                             <div class="address-title">
                                 <h2>Direcciones Disponibles</h2>
-                                <a href="/users/address" class="btn btn-primary">Agregar Direcciones</a>
+                                <a href="/users/address" class="btn btn-primary btn-sm">Agregar Direcciones</a>
                             </div>
                             <table class="table">
                                 <thead>
@@ -42,7 +42,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="vertical_align">
                                         <% for( let address of addressList ) { %>
                                             <td>
                                                 <%= address.name %>
@@ -62,12 +62,16 @@
                                             <td>
                                                 <%= address.city %>
                                             </td>
-                                            <td><a href="/users/address/edit/<%= address.id %>"
-                                                    class="btn btn-warning hight-50">Editar</a></td>
+                                            <td>
+                                                <form action="/users/address/edit/<%= address.id %>" method="get">
+                                                    <button type="Editar" 
+                                                        class="btn btn-warning btn-sm">Editar</button>
+                                                </form>
+                                            </td>
 
                                             <td>
                                                 <form action="/users/address/delete/<%= address.id %>" method="POST">
-                                                    <button type="Eliminar" class="btn btn-danger">Eliminar</button>
+                                                    <button type="Eliminar" class="btn btn-danger btn-sm">Eliminar</button>
                                                 </form>
                                             </td>
                                     </tr>

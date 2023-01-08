@@ -37,7 +37,7 @@
 
 .address-block-h{
   display: flex !important;
-  width: 65%;
+  width: 55%;
  
   flex-direction: column ;
 }
@@ -57,6 +57,13 @@
   flex-direction: row ;
 }
 
+.vertical_align{
+vertical-align: middle;
+}
+
+ td{
+  padding: 0.05rem 0.05rem !important;
+}
 
 
 
