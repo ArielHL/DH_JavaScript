@@ -27,6 +27,7 @@
     "node-fetch": "^2.6.7",
     "nodemon": "^2.0.20",
     "npm": "^9.2.0",
-    "sequelize": "^6.26.0"
+    "sequelize": "^6.26.0",
+    "sweetalert2": "^11.4.8"
   }
 }

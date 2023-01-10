@@ -201,19 +201,42 @@ const processAddress =   async (req, res) => {
                                             });
     }
 
-    let addressToCreate={
-        ...req.body
-       }
-    
-    try{
-        // create address
-        let addressCreated = await Address.create(addressToCreate);
+    // capture the address data from body
+    let addressToCreate={ ...req.body }
 
-        let addressId = addressCreated.id;
-        let userId = req.session.userLogged.id;
-                       
+    // checking if the address already exists
+    let addressInDB = await Address.findOne({
+                            where: {'name': req.body.name, 
+                                    'street': req.body.street,
+                                    'number':req.body.number,
+                                    'city_id':req.body.city_id,
+                                    'country_id':req.body.country_id,
+                                    'zipCode':req.body.zipCode,
+                                    'floor':req.body.floor,
+                                    'dept':req.body.dept,}  
+                        });
+
+    
+
+    try{
+
+        if (!addressInDB) {
+            // create address
+            var addressCreated = await Address.create(addressToCreate);
+            var addressId = addressCreated.id;
+        }else{
+            var addressId = addressInDB.id;
+        }
+    
+        var userId = req.session.userLogged.id;
+                    
         // create userAddress based on addressId and userId
         await UserAddress.create({user_id:userId,address_id:addressId})
+    }
+     catch(error){
+        console.log(error)
+    }
+
         // find all addresses of the user                                            
         const addressList = await Users.findByPk(userId, {include: ['usersAddress']})                                                                         
       
@@ -221,11 +244,6 @@ const processAddress =   async (req, res) => {
             user: req.session.userLogged,
             addressList:addressList.usersAddress
         });
-    }
-    catch(error){
-        console.log(error)
-    }
-
 }
 
 const editAddress = async (req, res) => {
@@ -281,17 +299,13 @@ const deleteAddress = async (req, res) => {
     const userId = req.session.userLogged.id;
     const addressId = req.params.id;
 
-
-   
-
-  
-                            await Address.destroy({where:{id:addressId}})
-                            // destroy the userAddress in pivot table if addressId is null
-                            await UserAddress.destroy({
-                                                        where:{user_id:userId,
-                                                            address_id:null }
-                                                        })
-       
+        await Address.destroy({where:{id:addressId}})
+        // destroy the userAddress in pivot table if addressId is null
+        await UserAddress.destroy({
+                                    where:{user_id:userId,
+                                        address_id:null }
+                                    })
+    
 
     const addressList = await Users.findByPk(userId, {include: ['usersAddress']})                                                                                        
 

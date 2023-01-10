@@ -13,7 +13,7 @@
                             <img src="/img/users/<%=user.avatar%> ">
                             <br>
                             <br>
-                            <div class="alert alert-success"> Tu Usuario <b>
+                            <div class="alert alert-success"> Tu Usuario es: <b>
                                     <%= user.email %>
                                 </b> </div>
                             <div class="alert alert-success"> Tu tienes el Rol de: <b>
@@ -25,8 +25,8 @@
                         </div>
                         <div class=" address-block-h">
                             <div class="address-title">
+                                <a href="/users/address" class="btn btn-primary btn-sm right-margin"><i class="fa-solid fa-plus"></i></a>
                                 <h2>Direcciones Disponibles</h2>
-                                <a href="/users/address" class="btn btn-primary btn-sm">Agregar Direcciones</a>
                             </div>
                             <table class="table">
                                 <thead>
@@ -63,15 +63,15 @@
                                                 <%= address.city %>
                                             </td>
                                             <td>
-                                                <form action="/users/address/edit/<%= address.id %>" method="get">
-                                                    <button type="Editar" 
+                                                <form action="/users/address/edit/<%= address.id %>" method="get" id="form-delete"">
+                                                    <button type="Editar" id="btn-editar"
                                                         class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i></button>
                                                 </form>
                                             </td>
 
                                             <td>
-                                                <form action="/users/address/delete/<%= address.id %>" method="POST">
-                                                    <button type="Eliminar" class="btn btn-danger btn-sm"><i class="fa-solid fa-pen-to-square"></i></button>
+                                                <form action="/users/address/delete/<%= address.id %>" method="POST" id="form-address-delete">
+                                                    <button type="Eliminar" id="btn-delete"class="btn btn-danger btn-sm"><i class="fa-solid fa-pen-to-square"></i></button>
                                                 </form>
                                             </td>
                                     </tr>
@@ -86,6 +86,8 @@
                 <!-- //Container -->
                 </div>
                 <%- include('../partials/footer')%>
+
+    <script src="/scripts/UserEvents.js"></script>
     </body>
 
     </html>
