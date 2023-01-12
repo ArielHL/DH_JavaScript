@@ -153,14 +153,16 @@ const loginProcess = async (req, res) => {
 const profile = async (req, res) => {
     
     const userId = req.session.userLogged.id;
-    const addressList = await Users.findByPk(userId, {
-            include: ['usersAddress']
+    const addressList = await Address.findAll({
+        include: ['city'],
+        where: {user_id:userId}
     })                                                                                        
     
+  
     // return res.send(addressList)
     return res.render('users/usersProfile',{
         user: req.session.userLogged,
-        addressList:addressList.usersAddress
+        addressList:addressList
     });
 }
 
@@ -188,6 +190,8 @@ const address = async (req, res) => {
 
 const processAddress =   async (req, res) => {
 
+    const bodyInfo = req.body;
+    const userId = req.session.userLogged.id;
     const addressResultValidation=validationResult(req);
     const countries = await Country.findAll();
     const cities = await City.findAll();
@@ -202,47 +206,30 @@ const processAddress =   async (req, res) => {
     }
 
     // capture the address data from body
-    let addressToCreate={ ...req.body }
 
-    // checking if the address already exists
-    let addressInDB = await Address.findOne({
-                            where: {'name': req.body.name, 
-                                    'street': req.body.street,
-                                    'number':req.body.number,
-                                    'city_id':req.body.city_id,
-                                    'country_id':req.body.country_id,
-                                    'zipCode':req.body.zipCode,
-                                    'floor':req.body.floor,
-                                    'dept':req.body.dept,}  
-                        });
-
+    bodyInfo.user_id=userId;
     
-
+    let addressToCreate={ ...bodyInfo }
+    
     try{
 
-        if (!addressInDB) {
-            // create address
-            var addressCreated = await Address.create(addressToCreate);
-            var addressId = addressCreated.id;
-        }else{
-            var addressId = addressInDB.id;
-        }
-    
-        var userId = req.session.userLogged.id;
-                    
-        // create userAddress based on addressId and userId
-        await UserAddress.create({user_id:userId,address_id:addressId})
+        // create address
+        const addressCreated = await Address.create(addressToCreate);
+
     }
      catch(error){
         console.log(error)
     }
 
         // find all addresses of the user                                            
-        const addressList = await Users.findByPk(userId, {include: ['usersAddress']})                                                                         
+        const addressList = await Address.findAll({
+            include: ['city'],
+            where: {user_id:userId}
+        })              
       
         return res.render('users/usersProfile',{
             user: req.session.userLogged,
-            addressList:addressList.usersAddress
+            addressList:addressList
         });
 }
 
@@ -255,6 +242,7 @@ const editAddress = async (req, res) => {
 }
 
 const processEditAddress = async (req, res) => {
+    const bodyInfo = req.body;
     const addressResultValidation=validationResult(req);
     const countries = await Country.findAll();
     const cities = await City.findAll();
@@ -272,7 +260,8 @@ const processEditAddress = async (req, res) => {
                                             });
     }
 
-    let addressToUpdate={ ...req.body }
+    bodyInfo.user_id=userId;
+    let addressToUpdate={ ...bodyInfo }
 
     try{
         // update address
@@ -280,13 +269,14 @@ const processEditAddress = async (req, res) => {
         // find all addresses of the user
 
   
-        const addressList = await Users.findByPk(userId, {
-                include: ['usersAddress']
+        const addressList = await Address.findAll({
+            include: ['city'],
+            where: {user_id:userId}
         })                                                                                        
         
         return res.render('users/usersProfile',{
             user: req.session.userLogged,
-            addressList:addressList.usersAddress
+            addressList:addressList
         });
 
     }
@@ -299,19 +289,18 @@ const deleteAddress = async (req, res) => {
     const userId = req.session.userLogged.id;
     const addressId = req.params.id;
 
-        await Address.destroy({where:{id:addressId}})
-        // destroy the userAddress in pivot table if addressId is null
-        await UserAddress.destroy({
-                                    where:{user_id:userId,
-                                        address_id:null }
-                                    })
+        // await Address.destroy({where:{id:addressId}})
+ 
     
 
-    const addressList = await Users.findByPk(userId, {include: ['usersAddress']})                                                                                        
+        const addressList = await Address.findAll({
+            include: ['city'],
+            where: {user_id:userId}
+        })                                                                                        
 
     return res.render('users/usersProfile',{
         user: req.session.userLogged,
-        addressList:addressList.usersAddress
+        addressList:addressList
     });
 
 }

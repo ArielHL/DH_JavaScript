@@ -1,6 +1,7 @@
-let formDelete = document.querySelector('#form-address-delete');
-console.log(formDelete);
+const formsDelete = document.querySelectorAll('#form-address-delete');
 
+
+for (let formDelete of formsDelete) {
 
 formDelete.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -17,4 +18,6 @@ formDelete.addEventListener('submit', function (e) {
             formDelete.submit();
         }
     })
+
 });
+}
