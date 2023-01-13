@@ -21,3 +21,6 @@ formDelete.addEventListener('submit', function (e) {
 
 });
 }
+
+// const formsEdit = document.querySelector('.form-address');
+// console.log(formsEdit);
